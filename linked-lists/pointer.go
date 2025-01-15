@@ -1,28 +1,28 @@
 package linkedlists
 
-type LinkedL struct {
+type Node struct {
 	info interface{}
-	suiv *LinkedL
+	suiv *Node
 }
 
-// Access implements LinkedList.
-func (l *LinkedL) Access(position int) (interface{}, error) {
+// Access implements Nodeist.
+func (l *Node) Access(position int) (interface{}, error) {
 	panic("unimplemented")
 }
 
-// Add implements LinkedList.
-func (l *LinkedL) Add(position int, element interface{}) error {
+// Add implements Nodeist.
+func (l *Node) Add(position int, element interface{}) error {
 	panic("unimplemented")
 }
 
-// Delete implements LinkedList.
-func (l *LinkedL) Delete(element interface{}) error {
+// Delete implements Nodeist.
+func (l *Node) Delete(element interface{}) error {
 	panic("unimplemented")
 }
 
-// EmptyList implements LinkedList.
-func (l *LinkedL) EmptyList() bool {
+// EmptyList implements Nodeist.
+func (l *Node) EmptyList() bool {
 	panic("unimplemented")
 }
 
-var _ LinkedList = (*LinkedL)(nil)
+var _ LinkedList = (*Node)(nil)
