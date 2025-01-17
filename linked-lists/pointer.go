@@ -22,7 +22,14 @@ func (l *Node) Delete(element interface{}) error {
 
 // EmptyList implements Nodeist.
 func (l *Node) EmptyList() bool {
-	panic("unimplemented")
+	return l == nil
+}
+
+func NewLinkedList() *Node {
+	return &Node{
+		info: 0,
+		suiv: nil,
+	}
 }
 
 var _ LinkedList = (*Node)(nil)
