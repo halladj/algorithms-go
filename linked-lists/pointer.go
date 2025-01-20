@@ -1,5 +1,7 @@
 package linkedlists
 
+import "errors"
+
 type Node struct {
 	info interface{}
 	suiv *Node
@@ -7,7 +9,17 @@ type Node struct {
 
 // Access implements Nodeist.
 func (l *Node) Access(position int) (interface{}, error) {
-	panic("unimplemented")
+
+	if l == nil {
+		return nil, errors.New("didn't find element")
+	} else {
+
+		if l.info == position {
+			return l.info, nil
+		} else {
+			return l.suiv.Access(position)
+		}
+	}
 }
 
 // Add implements Nodeist.
