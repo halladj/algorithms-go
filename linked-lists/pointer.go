@@ -24,7 +24,26 @@ func (l *Node) Access(position int) (interface{}, error) {
 
 // Add implements Nodeist.
 func (l *Node) Add(position int, element interface{}) error {
-	panic("unimplemented")
+	if position < 0 {
+		return errors.New("index out of iounds")
+	}
+
+	n, ok := element.(int)
+	if !ok {
+		return errors.New("invalid type")
+	}
+
+	temp := l
+	for i := 0; i < position; i++ {
+
+		temp = temp.suiv
+	}
+
+	k := NewLinkedList()
+	k.info = n
+	k.suiv = temp.suiv
+	temp = k
+	return nil
 }
 
 // Delete implements Nodeist.
