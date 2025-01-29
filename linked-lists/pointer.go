@@ -1,6 +1,9 @@
 package linkedlists
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type Node struct {
 	info interface{}
@@ -61,6 +64,18 @@ func NewLinkedList() *Node {
 		info: 0,
 		suiv: nil,
 	}
+}
+
+func (l *Node) ListPrint() {
+	var temp = l
+
+	fmt.Printf("[")
+	for temp != nil {
+		fmt.Printf("%d", temp.info)
+		fmt.Printf(" ,")
+		temp = temp.suiv
+	}
+	fmt.Printf("]")
 }
 
 var _ LinkedList = (*Node)(nil)
