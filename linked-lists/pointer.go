@@ -27,25 +27,24 @@ func (l *Node) Access(position int) (interface{}, error) {
 
 // Add implements Nodeist.
 func (l *Node) Add(position int, element interface{}) error {
-	if position < 0 {
-		return errors.New("index out of iounds")
-	}
-
 	n, ok := element.(int)
 	if !ok {
 		return errors.New("invalid type")
 	}
 
-	temp := l
-	for i := 0; i < position; i++ {
+	if position <= 0 || position > l.ListLength()+1 {
+		return errors.New("index out of Bounds")
+	}
 
+	k := &Node{info: n, suiv: nil}
+
+	temp := l
+	for i := 1; i < position; i++ {
 		temp = temp.suiv
 	}
 
-	k := NewLinkedList()
-	k.info = n
-	k.suiv = temp.suiv
-	temp = k
+	temp.suiv = k
+
 	return nil
 }
 
@@ -76,6 +75,18 @@ func (l *Node) ListPrint() {
 		temp = temp.suiv
 	}
 	fmt.Printf("]")
+}
+
+func (l *Node) ListLength() int {
+	temp := l
+	length := 0
+
+	for temp != nil {
+		temp = temp.suiv
+		length++
+	}
+
+	return length
 }
 
 var _ LinkedList = (*Node)(nil)

@@ -1,6 +1,10 @@
 package main
 
-import linkedlists "github.com/halladj/algorithms/linked-lists"
+import (
+	"fmt"
+
+	linkedlists "github.com/halladj/algorithms/linked-lists"
+)
 
 func main() {
 
@@ -21,8 +25,14 @@ func main() {
 	// ---> linkedList using Pointers
 	hamza := linkedlists.NewLinkedList()
 
-	// TODO: add does not work !!!
-	//hamza.Add(0, 10)
+	err := hamza.Add(1, 10)
+	if err != nil {
+		fmt.Printf("Error %v\n", err)
+	}
 
+	err = hamza.Add(2, 7)
+	if err != nil {
+		fmt.Printf("Error %v\n", err)
+	}
 	hamza.ListPrint()
 }
