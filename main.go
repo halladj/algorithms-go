@@ -34,5 +34,13 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error %v\n", err)
 	}
+
 	hamza.ListPrint()
+
+	v, err := hamza.Access(2)
+	n, ok := v.(int)
+	if err != nil || ok != true {
+		fmt.Printf("Error %v\n", err)
+	}
+	fmt.Printf("now this is the element %v", n)
 }

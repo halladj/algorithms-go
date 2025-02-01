@@ -13,6 +13,7 @@ type Node struct {
 // Access implements Nodeist.
 func (l *Node) Access(position int) (interface{}, error) {
 
+	// TODO: fix implementation cz it is hot trash.
 	if l == nil {
 		return nil, errors.New("didn't find element")
 	} else {
