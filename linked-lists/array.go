@@ -33,24 +33,14 @@ func (l *List) Add(position int, element interface{}) error {
 }
 
 // Delete implements LinkedList.
-func (l *List) Delete(element interface{}) error {
+func (l *List) Delete(position int) error {
 
-	n, ok := element.(int)
-
-	if !ok {
-		return errors.New("invalid type")
-	}
-
-	// check that the element is inside the valid
-	// range.
-
-	if n < 0 && n >= l.size {
+	if position < 0 || position >= l.size {
 		return errors.New("element out of bound")
 	}
-
 	// we are assuming that element is an index
 	// and we gonna over-ride it.
-	for i := n; i < l.size; i++ {
+	for i := position; i < l.size; i++ {
 		l.tab[i] = l.tab[i+1]
 	}
 

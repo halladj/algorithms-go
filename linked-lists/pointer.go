@@ -34,6 +34,10 @@ func (l *Node) Access(position int) (interface{}, error) {
 }
 
 // Add implements NodeList.
+
+// TODO: TO fix it we must start adding at the first so
+// the first element would be the the last as follows
+// [e1, e2, e3, MAX_VALUE], so then we dont have to deal with it.
 func (l *Node) Add(position int, element interface{}) error {
 	n, ok := element.(int)
 	if !ok {
@@ -57,8 +61,18 @@ func (l *Node) Add(position int, element interface{}) error {
 }
 
 // Delete implements NodeList.
-func (l *Node) Delete(element interface{}) error {
-	panic("unimplemented")
+func (l *Node) Delete(position int) error {
+	if position <= 0 || position >= l.ListLength() {
+		return errors.New("index out of Bounds")
+	}
+
+	temp := l
+	for i := 1; i < position; i++ {
+		temp = temp.suiv
+	}
+
+	temp.suiv = temp.suiv.suiv
+	return nil
 }
 
 // EmptyList implements NodeList.
@@ -97,6 +111,25 @@ func (l *Node) ListLength() int {
 	}
 
 	return length
+}
+
+func (l *Node) Update(position int, value interface{}) error {
+	n, ok := value.(int)
+	if !ok {
+		return errors.New("invalid type")
+	}
+
+	if position <= 0 || position > l.ListLength()+1 {
+		return errors.New("index out of Bounds")
+	}
+
+	temp := l
+	for i := 1; i < position; i++ {
+		temp = temp.suiv
+	}
+
+	temp.info = n
+	return nil
 }
 
 var _ LinkedList = (*Node)(nil)
