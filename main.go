@@ -37,10 +37,12 @@ func main() {
 
 	hamza.ListPrint()
 
-	v, err := hamza.Access(2)
-	n, ok := v.(int)
-	if err != nil || ok != true {
+	v, err := hamza.Access(7)
+	if err != nil {
 		fmt.Printf("Error %v\n", err)
+		// TODO: exit program.
 	}
-	fmt.Printf("now this is the element %v", n)
+
+	fmt.Printf("value: %d", v)
+
 }

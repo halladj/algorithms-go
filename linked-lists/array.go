@@ -65,7 +65,7 @@ func (l *List) EmptyList() bool {
 
 // Find implements LinkedList.
 func (l *List) Access(position int) (interface{}, error) {
-	if position < 0 && position > l.size {
+	if position < 0 || position > l.size {
 		return 0, errors.New("index out of iounds")
 	}
 
