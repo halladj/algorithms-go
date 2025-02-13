@@ -8,4 +8,7 @@ type Queue interface {
 	Dequeue() (interface{}, error)
 
 	QueuePrint()
+
+	Tete() interface{}
+	Queue() interface{}
 }
